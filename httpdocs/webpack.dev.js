@@ -5,7 +5,8 @@ const { merge } = require('webpack-merge');
 module.exports = merge(common, {
     mode: "development",
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, "build")
+      filename: '[name].js',
+      path: path.resolve(__dirname, "build"),
+      chunkFilename: '[id].[chunkhash].js',
     }
 });

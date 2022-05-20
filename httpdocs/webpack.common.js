@@ -1,10 +1,24 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  plugins: [new HtmlWebpackPlugin({
-    template: "./index.html"
-  })],
+  entry: {
+    home: './src/pages/home/script.js',
+    login: './src/pages/login/script.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Home',
+      filename: 'index.html',
+      template: './src/pages/home/index.html',
+      chunks: ['home']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Login',
+      filename: 'login/index.html',
+      template: './src/pages/login/index.html',
+      chunks: ['login']
+    }),
+  ],
   module: {
     rules: [
       {
