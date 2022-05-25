@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     home: './src/pages/home/script.js',
-    login: './src/pages/login/script.js'
+    login: './src/pages/login/script.js',
+    listPost: './src/pages/admin/post/list/script.js',
+    createPost: './src/pages/admin/post/create/script.js',
+    editPost: './src/pages/admin/post/edit/script.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -17,6 +20,24 @@ module.exports = {
       filename: 'login/index.html',
       template: './src/pages/login/index.html',
       chunks: ['login']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'List Post',
+      filename: 'admin/post/list/index.html',
+      template: './src/pages/admin/post/list/index.html',
+      chunks: ['listPost']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Create Post',
+      filename: 'admin/post/create/index.html',
+      template: './src/pages/admin/post/create/index.html',
+      chunks: ['createPost']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Edit Post',
+      filename: 'admin/post/edit/index.html',
+      template: './src/pages/admin/post/edit/index.html',
+      chunks: ['editPost']
     }),
   ],
   module: {
