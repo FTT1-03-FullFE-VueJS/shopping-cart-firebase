@@ -1,5 +1,5 @@
 import LocalStorage from '../../../../utils/local-storage';
-import { query, collection, onSnapshot } from "firebase/firestore";
+import { query, collection, onSnapshot, deleteDoc } from "firebase/firestore";
 import { db } from "../../../../firebase/config";
 import { APP_ACCESS_TOKEN, DB_TABLE_POSTS } from '../../../../config/constants';
 
@@ -28,7 +28,7 @@ function renderDom(posts) {
           <h5 class="card-title">${post.title}</h5>
           <p class="card-text">${post.content}</p>
           <a href="/admin/post/detail?id=${post.id}" class="btn btn-primary">View detail</a>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger btn-delete" data-post-id="${post.id}">Delete</button>
         </div>
       </div>
     </div>`
@@ -36,6 +36,22 @@ function renderDom(posts) {
 
   const productListEl = document.querySelector('.list-product');
   productListEl.innerHTML = _html.join('');
+
+  const listButtonsDelete = document.querySelectorAll('.btn-delete');
+  listButtonsDelete.forEach(elItem => {
+    elItem.addEventListener('click', function(event) {
+      const post_id = event.target.getAttribute('data-post-id');
+      onSnapshot(postQuery, snapshot => {
+        snapshot.forEach(doc => {
+          if (doc.id === post_id) {
+            if (confirm('Are you sure to delete this?')) {
+              deleteDoc(doc.ref);
+            }
+          };
+        });
+      });
+    });
+  });
 }
 
 window.addEventListener('load', checkLogin);

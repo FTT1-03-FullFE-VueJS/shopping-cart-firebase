@@ -4,9 +4,10 @@ module.exports = {
   entry: {
     home: './src/pages/home/script.js',
     login: './src/pages/login/script.js',
-    listPost: './src/pages/admin/post/list/script.js',
-    createPost: './src/pages/admin/post/create/script.js',
-    editPost: './src/pages/admin/post/edit/script.js',
+    adminListPost: './src/pages/admin/post/list/script.js',
+    adminCreatePost: './src/pages/admin/post/create/script.js',
+    adminEditPost: './src/pages/admin/post/edit/script.js',
+    adminDetailPost: './src/pages/admin/post/detail/script.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -22,22 +23,29 @@ module.exports = {
       chunks: ['login']
     }),
     new HtmlWebpackPlugin({
-      title: 'List Post',
+      title: 'Admin List Post',
       filename: 'admin/post/list/index.html',
       template: './src/pages/admin/post/list/index.html',
-      chunks: ['listPost']
+      chunks: ['adminListPost']
     }),
     new HtmlWebpackPlugin({
-      title: 'Create Post',
+      title: 'Admin Create Post',
       filename: 'admin/post/create/index.html',
       template: './src/pages/admin/post/create/index.html',
-      chunks: ['createPost']
+      chunks: ['adminCreatePost']
     }),
     new HtmlWebpackPlugin({
-      title: 'Edit Post',
+      title: 'Admin Edit Post',
       filename: 'admin/post/edit/index.html',
       template: './src/pages/admin/post/edit/index.html',
-      chunks: ['editPost']
+      chunks: ['adminEditPost']
+    }),
+    // new
+    new HtmlWebpackPlugin({
+      title: 'Admin Detail Post',
+      filename: 'admin/post/detail/index.html',
+      template: './src/pages/admin/post/detail/index.html',
+      chunks: ['adminDetailPost']
     }),
   ],
   module: {
