@@ -29,6 +29,7 @@ function renderDom(posts) {
           <p class="card-text">${post.content}</p>
           <a href="/admin/post/detail?id=${post.id}" class="btn btn-primary">View detail</a>
           <button type="button" class="btn btn-danger btn-delete" data-post-id="${post.id}">Delete</button>
+          <a href="/admin/post/edit?id=${post.id}" class="btn btn-warning btn-edit">Edit</a>
         </div>
       </div>
     </div>`
